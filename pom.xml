@@ -222,6 +222,11 @@
         <version>${aws.amazonaws.version}</version>
       </dependency>
       <dependency>
+        <groupId>com.baidubce</groupId>
+        <artifactId>bce-java-sdk</artifactId>
+        <version>0.10.313</version>
+      </dependency>
+      <dependency>
         <groupId>com.beust</groupId>
         <artifactId>jcommander</artifactId>
         <version>1.78</version>

@@ -55,6 +55,10 @@ libModules:
     generatedJarPath: "lib/alluxio-underfs-oss-${VERSION}.jar"
     bundleWith:
       - default
+  underfs-bos:
+    generatedJarPath: "lib/alluxio-underfs-bos-${VERSION}.jar"
+    bundleWith:
+      - default
   underfs-s3a:
     generatedJarPath: "lib/alluxio-underfs-s3a-${VERSION}.jar"
     bundleWith:
