@@ -70,6 +70,7 @@ public final class Constants {
   // See https://cloud.google.com/storage/docs/cloud-console
   public static final String HEADER_GCS = "gs://";
   public static final String HEADER_OSS = "oss://";
+  public static final String HEADER_BOS = "bos://";
   public static final String HEADER_S3 = "s3://";
   public static final String HEADER_S3A = "s3a://";
   public static final String HEADER_WASB = "wasb://";

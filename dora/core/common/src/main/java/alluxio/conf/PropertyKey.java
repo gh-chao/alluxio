@@ -1384,6 +1384,8 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.SERVER)
           .build();
+
+
   public static final PropertyKey UNDERFS_OSS_CONNECT_MAX =
       intBuilder(Name.UNDERFS_OSS_CONNECT_MAX)
           .setDefaultValue(1024)
@@ -1477,6 +1479,102 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
           .setScope(Scope.SERVER)
           .build();
+
+  public static final PropertyKey UNDERFS_BOS_CONNECT_MAX =
+          intBuilder(Name.UNDERFS_BOS_CONNECT_MAX)
+                  .setDefaultValue(1024)
+                  .setDescription("The maximum number of BOS connections.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_CONNECT_TIMEOUT =
+          durationBuilder(Name.UNDERFS_BOS_CONNECT_TIMEOUT)
+                  .setAlias("alluxio.underfs.bos.connection.timeout.ms")
+                  .setDefaultValue("50sec")
+                  .setDescription("The timeout when connecting to BOS.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_CONNECT_TTL =
+          durationBuilder(Name.UNDERFS_BOS_CONNECT_TTL)
+                  .setDefaultValue(-1)
+                  .setDescription("The TTL of BOS connections in ms.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_SOCKET_TIMEOUT =
+          durationBuilder(Name.UNDERFS_BOS_SOCKET_TIMEOUT)
+                  .setAlias("alluxio.underfs.bos.socket.timeout.ms")
+                  .setDefaultValue("50sec")
+                  .setDescription("The timeout of BOS socket.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_ECS_RAM_ROLE =
+          stringBuilder(Name.UNDERFS_BOS_ECS_RAM_ROLE)
+                  .setAlias("alluxio.underfs.bos.ecs.ram.role")
+                  .setDescription("The RAM role of current owner of ECS.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_RETRY_MAX =
+          intBuilder(Name.UNDERFS_BOS_RETRY_MAX)
+                  .setAlias("alluxio.underfs.bos.retry.max")
+                  .setDefaultValue(3)
+                  .setDescription("The maximum number of BOS error retry.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_PROTOCOL =
+          stringBuilder(Name.UNDERFS_BOS_PROTOCOL)
+                  .setAlias("alluxio.underfs.bos.protocol")
+                  .setDefaultValue("http")
+                  .setDescription("The protocol for BOS endpoint, by default http.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_PROXY_HOST =
+          stringBuilder(Name.UNDERFS_BOS_PROXY_HOST)
+                  .setAlias("alluxio.underfs.bos.proxy.host")
+                  .setDescription("The proxy host address for BOS connection, if any.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_PROXY_PORT =
+          intBuilder(Name.UNDERFS_BOS_PROXY_PORT)
+                  .setAlias("alluxio.underfs.bos.proxy.port")
+                  .setDefaultValue(0)
+                  .setDescription("The proxy port for BOS connection, if any.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_STS_ECS_METADATA_SERVICE_ENDPOINT =
+          stringBuilder(Name.UNDERFS_BOS_STS_ECS_METADATA_SERVICE_ENDPOINT)
+                  .setAlias("alluxio.underfs.bos.sts.ecs.metadata.service.endpoint")
+                  .setDefaultValue("http://100.100.100.200/latest/meta-data/ram/security-credentials/")
+                  .setDescription("The ECS metadata service endpoint for Aliyun STS")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_STS_ENABLED =
+          booleanBuilder(Name.UNDERFS_BOS_STS_ENABLED)
+                  .setAlias("alluxio.underfs.bos.sts.enabled")
+                  .setDefaultValue(false)
+                  .setDescription("Whether to enable bos STS(Security Token Service).")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_STS_TOKEN_REFRESH_INTERVAL_MS =
+          durationBuilder(Name.UNDERFS_BOS_STS_TOKEN_REFRESH_INTERVAL_MS)
+                  .setAlias("alluxio.underfs.bos.sts.token.refresh.interval.ms")
+                  .setDefaultValue("30m")
+                  .setDescription("Time before an BOS Security Token is considered expired "
+                          + "and will be automatically renewed")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+
+
   public static final PropertyKey UNDERFS_S3_ADMIN_THREADS_MAX =
       intBuilder(Name.UNDERFS_S3_ADMIN_THREADS_MAX)
           .setDefaultValue(20)
@@ -1851,6 +1949,7 @@ public final class PropertyKey implements Comparable<PropertyKey> {
       .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
       .setScope(Scope.SERVER)
       .build();
+
   public static final PropertyKey OSS_ACCESS_KEY = stringBuilder(Name.OSS_ACCESS_KEY)
       .setDescription("The access key of OSS bucket.")
       .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
@@ -1943,6 +2042,101 @@ public final class PropertyKey implements Comparable<PropertyKey> {
           .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
           .setScope(Scope.SERVER)
           .build();
+
+
+  public static final PropertyKey BOS_ACCESS_KEY = stringBuilder(Name.BOS_ACCESS_KEY)
+          .setDescription("The access key of BOS bucket.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+          .setScope(Scope.SERVER)
+          .setDisplayType(DisplayType.CREDENTIALS)
+          .build();
+  public static final PropertyKey BOS_ENDPOINT_KEY = stringBuilder(Name.BOS_ENDPOINT_KEY)
+          .setDescription("The endpoint key of BOS bucket.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+          .setScope(Scope.SERVER)
+          .build();
+  public static final PropertyKey BOS_SECRET_KEY = stringBuilder(Name.BOS_SECRET_KEY)
+          .setDescription("The secret key of BOS bucket.")
+          .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+          .setScope(Scope.SERVER)
+          .setDisplayType(DisplayType.CREDENTIALS)
+          .build();
+  public static final PropertyKey UNDERFS_BOS_INTERMEDIATE_UPLOAD_CLEAN_AGE =
+          durationBuilder(Name.UNDERFS_BOS_INTERMEDIATE_UPLOAD_CLEAN_AGE)
+                  .setDefaultValue("3day")
+                  .setDescription("Streaming uploads or multipart uploads"
+                          + " may not have been completed/aborted correctly "
+                          + "and need periodical ufs cleanup. If ufs cleanup is enabled, "
+                          + "intermediate multipart uploads in all non-readonly BOS mount points "
+                          + "older than this age will be cleaned. This may impact other "
+                          + "ongoing upload operations, so a large clean age is encouraged.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_STREAMING_UPLOAD_ENABLED =
+          booleanBuilder(Name.UNDERFS_BOS_STREAMING_UPLOAD_ENABLED)
+                  .setDefaultValue(false)
+                  .setDescription("(Experimental) If true, using streaming upload to write to BOS.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_STREAMING_UPLOAD_PARTITION_SIZE =
+          dataSizeBuilder(Name.UNDERFS_BOS_STREAMING_UPLOAD_PARTITION_SIZE)
+                  .setDefaultValue("64MB")
+                  .setDescription("Maximum allowable size of a single buffer file when using "
+                          + "BOS streaming upload. When the buffer file reaches the partition size, "
+                          + "it will be uploaded and the upcoming data will write to other buffer files."
+                          + "If the partition size is too small, BOS upload speed might be affected. ")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_STREAMING_UPLOAD_THREADS =
+          intBuilder(Name.UNDERFS_BOS_STREAMING_UPLOAD_THREADS)
+                  .setDefaultValue(20)
+                  .setDescription("the number of threads to use for streaming upload data to BOS.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_MULTIPART_UPLOAD_ENABLED =
+          booleanBuilder(Name.UNDERFS_BOS_MULTIPART_UPLOAD_ENABLED)
+                  .setDefaultValue(false)
+                  .setDescription("(Experimental) If true, using multipart upload to write to BOS.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_MULTIPART_UPLOAD_THREADS =
+          intBuilder(Name.UNDERFS_BOS_MULTIPART_UPLOAD_THREADS)
+                  .setDefaultValue(20)
+                  .setDescription("the number of threads to use for multipart upload data to BOS.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_MULTIPART_UPLOAD_PARTITION_SIZE =
+          dataSizeBuilder(Name.UNDERFS_BOS_MULTIPART_UPLOAD_PARTITION_SIZE)
+                  .setDefaultValue("64MB")
+                  .setDescription("Maximum allowable size of a single buffer file when using "
+                          + "BOS multipart upload. When the buffer file reaches the partition size, "
+                          + "it will be uploaded and the upcoming data will write to other buffer files."
+                          + "If the partition size is too small, BOS upload speed might be affected. ")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_DEFAULT_MODE =
+          stringBuilder(Name.UNDERFS_BOS_DEFAULT_MODE)
+                  .setAlias("alluxio.underfs.bos.default.mode")
+                  .setDefaultValue("0700")
+                  .setDescription("Mode (in octal notation) for BOS objects if mode cannot be discovered.")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.WARN)
+                  .setScope(Scope.SERVER)
+                  .build();
+  public static final PropertyKey UNDERFS_BOS_OWNER_ID_TO_USERNAME_MAPPING =
+          stringBuilder(Name.UNDERFS_BOS_OWNER_ID_TO_USERNAME_MAPPING)
+                  .setDescription("Optionally, specify a preset bos canonical id to Alluxio username "
+                          + "static mapping, in the format \"id1=user1;id2=user2\". ")
+                  .setConsistencyCheckLevel(ConsistencyCheckLevel.ENFORCE)
+                  .setScope(Scope.SERVER)
+                  .build();
+
   public static final PropertyKey S3A_ACCESS_KEY = stringBuilder(Name.S3A_ACCESS_KEY)
       .setAlias(Name.AWS_ACCESS_KEY)
       .setDescription("The access key of S3 bucket.")
@@ -7447,6 +7641,8 @@ public final class PropertyKey implements Comparable<PropertyKey> {
         "alluxio.underfs.object.store.mount.shared.publicly";
     public static final String UNDERFS_OBJECT_STORE_MULTI_RANGE_CHUNK_SIZE =
         "alluxio.underfs.object.store.multi.range.chunk.size";
+
+
     public static final String UNDERFS_OSS_CONNECT_MAX = "alluxio.underfs.oss.connection.max";
     public static final String UNDERFS_OSS_CONNECT_TIMEOUT =
         "alluxio.underfs.oss.connection.timeout";
@@ -7480,6 +7676,42 @@ public final class PropertyKey implements Comparable<PropertyKey> {
         "alluxio.underfs.oss.default.mode";
     public static final String UNDERFS_OSS_OWNER_ID_TO_USERNAME_MAPPING =
         "alluxio.underfs.oss.owner.id.to.username.mapping";
+
+
+    public static final String UNDERFS_BOS_CONNECT_MAX = "alluxio.underfs.bos.connection.max";
+    public static final String UNDERFS_BOS_CONNECT_TIMEOUT =
+            "alluxio.underfs.bos.connection.timeout";
+    public static final String UNDERFS_BOS_CONNECT_TTL = "alluxio.underfs.bos.connection.ttl";
+    public static final String UNDERFS_BOS_SOCKET_TIMEOUT = "alluxio.underfs.bos.socket.timeout";
+    public static final String UNDERFS_BOS_ECS_RAM_ROLE = "alluxio.underfs.bos.ecs.ram.role";
+    public static final String UNDERFS_BOS_RETRY_MAX = "alluxio.underfs.bos.retry.max";
+    public static final String UNDERFS_BOS_PROTOCOL = "alluxio.underfs.bos.protocol";
+    public static final String UNDERFS_BOS_PROXY_HOST = "alluxio.underfs.bos.proxy.host";
+    public static final String UNDERFS_BOS_PROXY_PORT = "alluxio.underfs.bos.proxy.port";
+    public static final String UNDERFS_BOS_STS_ECS_METADATA_SERVICE_ENDPOINT =
+            "alluxio.underfs.bos.sts.ecs.metadata.service.endpoint";
+    public static final String UNDERFS_BOS_STS_ENABLED = "alluxio.underfs.bos.sts.enabled";
+    public static final String UNDERFS_BOS_STS_TOKEN_REFRESH_INTERVAL_MS =
+            "alluxio.underfs.bos.sts.token.refresh.interval.ms";
+    public static final String UNDERFS_BOS_INTERMEDIATE_UPLOAD_CLEAN_AGE =
+            "alluxio.underfs.bos.intermediate.upload.clean.age";
+    public static final String UNDERFS_BOS_STREAMING_UPLOAD_ENABLED =
+            "alluxio.underfs.bos.streaming.upload.enabled";
+    public static final String UNDERFS_BOS_STREAMING_UPLOAD_PARTITION_SIZE =
+            "alluxio.underfs.bos.streaming.upload.partition.size";
+    public static final String UNDERFS_BOS_STREAMING_UPLOAD_THREADS =
+            "alluxio.underfs.bos.streaming.upload.threads";
+    public static final String UNDERFS_BOS_MULTIPART_UPLOAD_ENABLED =
+            "alluxio.underfs.bos.multipart.upload.enabled";
+    public static final String UNDERFS_BOS_MULTIPART_UPLOAD_THREADS =
+            "alluxio.underfs.bos.multipart.upload.threads";
+    public static final String UNDERFS_BOS_MULTIPART_UPLOAD_PARTITION_SIZE =
+            "alluxio.underfs.bos.multipart.upload.part.size";
+    public static final String UNDERFS_BOS_DEFAULT_MODE =
+            "alluxio.underfs.bos.default.mode";
+    public static final String UNDERFS_BOS_OWNER_ID_TO_USERNAME_MAPPING =
+            "alluxio.underfs.bos.owner.id.to.username.mapping";
+
     public static final String UNDERFS_S3_BULK_DELETE_ENABLED =
         "alluxio.underfs.s3.bulk.delete.enabled";
     public static final String UNDERFS_S3_DEFAULT_MODE = "alluxio.underfs.s3.default.mode";
@@ -7589,9 +7821,15 @@ public final class PropertyKey implements Comparable<PropertyKey> {
     public static final String GCS_ACCESS_KEY = "fs.gcs.accessKeyId";
     public static final String GCS_SECRET_KEY = "fs.gcs.secretAccessKey";
     public static final String GCS_CREDENTIAL_PATH = "fs.gcs.credential.path";
+
     public static final String OSS_ACCESS_KEY = "fs.oss.accessKeyId";
     public static final String OSS_ENDPOINT_KEY = "fs.oss.endpoint";
     public static final String OSS_SECRET_KEY = "fs.oss.accessKeySecret";
+
+    public static final String BOS_ACCESS_KEY = "fs.bos.accessKeyId";
+    public static final String BOS_ENDPOINT_KEY = "fs.bos.endpoint";
+    public static final String BOS_SECRET_KEY = "fs.bos.accessKeySecret";
+
     public static final String S3A_ACCESS_KEY = "s3a.accessKeyId";
     public static final String S3A_SECRET_KEY = "s3a.secretKey";
     public static final String AWS_ACCESS_KEY = "aws.accessKeyId";
